@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/ask_question.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+<div class="overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <div class="tab-menu">
+                <div class="tab active">Add Question</div>
+                
+            </div>
+        </div>
+        <form method="POST" action="{% url 'ask_question' %}">
+            {% csrf_token %}
+        <div class="modal-body">
+            <div class="tips-box">
+                <strong>Tips on getting good answers quickly</strong>
+                <ul>
+                    <li>Make sure your question has not been asked already</li>
+                    <li>Keep your question short and to the point</li>
+                    <li>Double-check grammar and spelling</li>
+                </ul>
+            </div>
+
+            <div class="ask-form">
+                <div class="profile-section">
+                    <img src="{% static 'images/user-icon.png' %}" class="profile-pic">
+                    <select class="visibility">
+                        <option value="public">🌐 Public</option>
+                        <option value="private">🔒 Private</option>
+                    </select>
+                </div>
+                <!-- Title Box -->
+                <!-- Title Field -->
+        <input type="text" name="title" class="question-title" placeholder="Enter a clear, descriptive title" required />
+
+        <!-- Description Textarea -->
+        <textarea name="description" class="question-textarea" placeholder='Start your question with "What", "How", "Why", etc.' required></textarea>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="cancel">Cancel</button>
+        <button type="submit" class="add-btn">Add Question</button>
+    </div>
+    </form> 
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const closeBtn = document.querySelector('.close');
+        const cancelBtn = document.querySelector('.cancel');
+
+        function redirectToHome() {
+            window.location.href = 'home/';
+        }
+
+        closeBtn.addEventListener('click', redirectToHome);
+        cancelBtn.addEventListener('click', redirectToHome);
+    });
+</script>
+
+
+{% endblock %}

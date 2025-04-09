@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'styles/login.css' %}">
+{% endblock %}
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-dark text-white py-10">
+  <div class="bg-zinc-900 rounded-xl shadow-xl w-full max-w-3xl flex flex-col md:flex-row overflow-hidden">
+    <!-- Left Side: Social Login -->
+    <div class="w-full md:w-1/2 p-8 border-r border-zinc-800">
+      <h1 class="text-5xl font-bold text-red-600 font-serif mb-4">Quora</h1>
+      <p class="text-sm text-gray-300 mb-8">
+        A place to share knowledge and better understand the world
+      </p>
+      <p class="text-xs text-gray-500 mb-4">
+        By continuing you indicate that you agree to Quora’s 
+        <a href="#" class="text-blue-400 underline">Terms of Service</a> and 
+        <a href="#" class="text-blue-400 underline">Privacy Policy</a>.
+      </p>
+
+     
+
+      <p class="text-sm mt-4 underline cursor-pointer">Sign up with email</p>
+    </div>
+
+    <!-- Right Side: Login Form -->
+    <div class="w-full md:w-1/2 p-8">
+      <h2 class="text-2xl font-semibold mb-6">Login</h2>
+      <form method="post" class="space-y-4">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div>
+          <label class="block text-sm font-medium">Email</label>
+          {{ form.username|add_class:"custom-input" }}
+          {{ form.username.errors }}
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Password</label>
+          {{ form.password|add_class:"custom-input" }}
+          {{ form.password.errors }}
+        </div>
+
+        <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-semibold">
+          Login
+        </button>
+
+        <div class="text-sm mt-2">
+          <a href="#" class="text-blue-400 hover:underline">Forgot password?</a>
+        </div>
+      </form>
+
+      <div class="mt-6 text-sm bg-blue-900 text-blue-200 p-3 rounded-lg">
+        You are now logged out of this browser, but are still logged in with other browsers. 
+        <a href="#" class="underline text-blue-300">Log out of all browsers</a>.
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

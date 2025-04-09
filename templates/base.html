@@ -1,0 +1,38 @@
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'styles/login.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Quora Clone{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  {% block content %}{% endblock %}
+</body>
+</html>
+
+
+
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Quora Clone</title>
+</head>
+<body>
+    <div>
+        {% if user.is_authenticated %}
+            Logged in as {{ user.username }} | <a href="/logout/">Logout</a>
+        {% else %}
+            <a href="/login/">Login</a>
+        {% endif %}
+    </div>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html> {% endcomment %}

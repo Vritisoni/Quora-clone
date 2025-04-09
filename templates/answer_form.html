@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Answer: {{ question.title }}</h2>
+<form method="post">{% csrf_token %}
+    <textarea name="answer" placeholder="Your answer"></textarea><br>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

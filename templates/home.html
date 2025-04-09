@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+
+<div class="quora-container">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <h1 class="logo">Quora</h1>
+        <div class="nav-icons">
+            <i class="fa fa-home active"></i>
+            <i class="fa fa-file-text"></i>
+            <i class="fa fa-users"></i>
+            <i class="fa fa-bell"></i>
+            <input type="text" placeholder="Search Quora" class="search-box" />
+            <button class="add-btn" onclick="window.location.href='{% url 'ask_question' %}'">Add question</button>
+
+        </div>
+    </div>
+
+    <!-- Side Navigation -->
+    <div class="side-nav">
+        <button class="create-space">+ Create Space</button>
+        <ul class="side-links">
+            <li>About</li>
+            <li>Careers</li>
+            <li>Terms</li>
+            <li>Privacy</li>
+            <li>Advertise</li>
+        </ul>
+    </div>
+
+    <!-- Feed -->
+    <div class="feed-section">
+        <!-- Ask/Answer/Post box -->
+        <div class="post-box">
+            <img src="{% static 'img/user-avatar.png' %}" alt="user" class="user-avatar">
+            <input type="text" placeholder="What do you want to ask or share?" class="ask-input">
+            <div class="post-actions">
+                <button onclick="window.location.href='{% url 'ask_question' %}'">Ask</button>
+
+                <button>Answer</button>
+                <button>Post</button>
+            </div>
+        </div>
+
+        <!-- Question Card -->
+        <!-- Question Card -->
+<div class="question-card">
+    {% for question in questions %}
+    <div class="question-card">
+        <div class="user-info">
+            <strong>{{ question.asked_by.user.username }}</strong> ·
+            <span>{{ question.asked_by.profession }}</span>
+        </div>
+        <h3 class="question-title">{{ question.title }}</h3>
+        <p class="question-desc">{{ question.description }}</p>
+        <div class="card-actions">
+            <span>▲ Upvote · {{ question.upvotes.count }}</span>
+            <span>💬 {{ question.answer_set.count }}</span>
+            <span>⋯</span>
+        </div>
+
+        {% for answer in question.answer_set.all %}
+        <div class="answer-box">
+            <strong>{{ answer.answered_by.user.username }}</strong>:
+            <p>{{ answer.content }}</p>
+
+            <form method="post" action="{% url 'like_answer' answer.id %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="like-btn">👍 Like ({{ answer.likes.count }})</button>
+            </form>
+        </div>
+        {% endfor %}
+
+
+    </div>
+    {% endfor %}
+</div>
+
+        <!-- Promoted Post -->
+        <div class="promoted-card">
+            <small>Promoted by Tradee</small>
+            <div class="user-info">
+                <strong>Linda Anand</strong> · <span>Lives in Goa, India</span>
+            </div>
+            <h4 class="question-title">What is the best Telegram channel for the Indian stock market?</h4>
+            <p>Hi, My name is Linda, and I have been trading since 2015...</p>
+            <img src="{% static 'img/portfolio-sample.png' %}" class="promo-img" />
+        </div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="right-sidebar">
+        <img src="{% static 'img/ad-placeholder.png' %}" class="ad-img">
+        <small>Advertisement</small>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,134 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #121212;
+    color: #fff;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+    background-color: #1e1e1e;
+    width: 700px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    padding: 20px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.close {
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.tab-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.tab {
+    cursor: pointer;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.tab.active {
+    border-bottom: 2px solid #007bff;
+    color: #fff;
+}
+
+.tab.inactive {
+    color: #999;
+}
+
+.tips-box {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.tips-box ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.visibility {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+.question-textarea {
+    width: 100%;
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cancel, .add-btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancel {
+    background-color: transparent;
+    color: #fff;
+}
+
+.add-btn {
+    background-color: #2f6ee2;
+    color: #fff;
+}
+.question-title {
+    width: 100%;
+    background-color: #222;
+    
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px 12px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
